@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anshika Rao Portfolio</title>
+  <title>Anshika Rao | Network & Security</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
      :root {
-    --bg-light: #e6f2ff;
-    --bg-dark: #1c1c1e;
-    --text-light: #333;
+    --bg-light: rgba(0, 0, 0, 0.7);
+    --bg-dark: rgba(0, 0, 0, 0.85);
+    --text-light: #e6f2ff;
     --text-dark: #f2f2f2;
-    --header-light: linear-gradient(90deg, #003366, #336699);
-    --header-dark: linear-gradient(90deg, #222, #555);
+    --accent-color: #00e5ff;
+    --accent-color-secondary: #7b4397;
+    --header-light: linear-gradient(90deg, rgba(0, 51, 102, 0.8), rgba(51, 102, 153, 0.8));
+    --header-dark: linear-gradient(90deg, rgba(34, 34, 34, 0.9), rgba(85, 85, 85, 0.9));
+    --glow-color: rgba(0, 229, 255, 0.5);
   }
 
   body {
@@ -74,17 +78,48 @@
 
   #themeToggle {
     cursor: pointer;
-    background-color: #550066;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
     color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 8px;
-    transition: background 0.3s;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  #themeToggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s;
+    z-index: -1;
+  }
+
+  #themeToggle:hover::before {
+    left: 100%;
+  }
+
+  #themeToggle i {
+    margin-right: 8px;
   }
 
   #themeToggle:hover {
-    background-color: #0055aa;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -125,26 +160,95 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('images/your-background-image.jpg');
+    background-image: url('image/image_trae.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     color: var(--text-light);
     line-height: 1.6;
     transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: -1;
+  }
+  
+  /* Animated grid background */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(18, 16, 16, 0) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(18, 16, 16, 0) 2px, transparent 2px),
+      linear-gradient(rgba(18, 16, 16, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18, 16, 16, 0.1) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    animation: backgroundMove 50s linear infinite;
+    z-index: -1;
+    opacity: 0.2;
+  }
+  
+  @keyframes backgroundMove {
+    0% {
+      background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+      background-position: 1000px 0, 1000px 0, 200px 0, 200px 0;
+    }
   }
 
   header {
-    background: linear-gradient(90deg, #003366, #336699);
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.8) 0%, rgba(123, 67, 151, 0.8) 100%);
     color: white;
-    padding: 30px 20px;
-    border-radius: 10px;
+    padding: 40px 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-color);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(transparent, transparent 50px, rgba(255, 255, 255, 0.03) 50px, rgba(255, 255, 255, 0.03) 100px);
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+  
+  header h1, header p {
+    position: relative;
+    z-index: 1;
+  }
+  
+  header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    letter-spacing: 2px;
   }
 
   header h1 {
@@ -152,23 +256,70 @@
     margin-bottom: 10px;
   }
 
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
   section {
-    background-color: burlywood;
-    padding: 25px;
-    margin-top: 30px;
+    background-color: var(--bg-light);
+    padding: 30px;
+    margin: 30px auto;
     border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-left: 3px solid var(--accent-color);
+    max-width: 1000px;
+    position: relative;
+    overflow: hidden;
   }
 
   section:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px var(--glow-color);
+  }
+  
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  section:hover::before {
+    opacity: 1;
+  }
+  
+  section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle at bottom right, rgba(0, 229, 255, 0.05), transparent 70%);
+    pointer-events: none;
   }
 
   h2 {
-    color: #003366;
-    margin-bottom: 15px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
     font-size: 1.8em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  h2 i {
+    margin-right: 10px;
   }
 
   ul {
@@ -181,12 +332,237 @@
   }
 
   a {
-    color: #00b4cc;
+    color: var(--accent-color);
     text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
   }
 
   a:hover {
-    text-decoration: underline;
+    color: #4dd0e1;
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+  }
+  
+  a:hover::after {
+    width: 100%;
+  }
+  
+  .skills-category {
+    margin-bottom: 25px;
+  }
+  
+  .skills-category h3 {
+    color: var(--accent-color);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .skills-category h3 i {
+    margin-right: 10px;
+    color: var(--accent-color);
+  }
+  
+  .skills-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+  }
+  
+  .skill-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    cursor: pointer;
+  }
+  
+  .skill-item:hover {
+    transform: translateY(-3px);
+    background: rgba(0, 229, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  }
+  
+  .skill-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .skill-item:hover::before {
+    opacity: 1;
+  }
+  
+  .skill-item i {
+    margin-right: 15px;
+    color: var(--accent-color);
+    font-size: 1.5em;
+    transition: transform 0.3s;
+    min-width: 25px;
+    text-align: center;
+  }
+  
+  .skill-item:hover i {
+    transform: scale(1.2);
+  }
+  
+  .skill-content {
+    flex: 1;
+  }
+  
+  .skill-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+  }
+  
+  .skill-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 0;
+    margin-top: 0;
+  }
+  
+  .skill-details p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+  
+  .expandable {
+    position: relative;
+  }
+  
+  .expandable::after {
+    content: '+';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+  }
+  
+  .expandable.expanded::after {
+    transform: rotate(45deg);
+  }
+  
+  .expandable.expanded .skill-details {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 8px;
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-item i {
+    margin-right: 10px;
+    color: var(--accent-color);
+    font-size: 1.2em;
+  }
+  
+  .tech-decoration {
+    position: absolute;
+    opacity: 0.05;
+    z-index: -1;
+  }
+  
+  .binary {
+    font-family: monospace;
+    font-size: 3em;
+    top: 20%;
+    right: 5%;
+    transform: rotate(15deg);
+    animation: fadeInOut 8s infinite alternate;
+  }
+  
+  .circuit {
+    bottom: 10%;
+    left: 5%;
+    font-size: 8em;
+    animation: pulse 4s infinite alternate;
+  }
+  
+  .matrix {
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    font-family: monospace;
+    font-size: 1.5em;
+    opacity: 0.03;
+    transform: rotate(-10deg);
+    animation: fadeInOut 12s infinite alternate-reverse;
+  }
+  
+  .code-lines {
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    font-family: monospace;
+    font-size: 1.2em;
+    opacity: 0.03;
+    transform: rotate(5deg);
+    animation: fadeInOut 10s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.03; }
+    50% { opacity: 0.07; }
+    100% { opacity: 0.03; }
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0.02; }
+    100% { opacity: 0.06; }
   }
 
 
@@ -194,49 +570,367 @@
 
 </head>
 <body>
+  <div class="tech-decoration binary">01001110 01100101 01110100 01110111 01101111 01110010 01101011</div>
+  <div class="tech-decoration circuit"><i class="fas fa-microchip"></i></div>
+  <div class="tech-decoration matrix">function secure() {<br>  return encrypt(data);<br>}<br>// Network Security Protocol</div>
+  <div class="tech-decoration code-lines">class NetworkAnalyzer {<br>  constructor() {<br>    this.packets = [];<br>  }<br>  analyze() {<br>    // Analyzing network traffic<br>  }<br>}</div>
+  
   <header>
-
-    <h1> Anshika Rao</h1>
-    <p> Bachelor of Networking & Security Student</p>
-    <p>University of the South Pacific</p>
+    <h1><i class="fas fa-network-wired"></i> Anshika Rao</h1>
+    <p><i class="fas fa-user-shield"></i> Bachelor of Networking & Security Student</p>
+    <p><i class="fas fa-university"></i> University of the South Pacific</p>
   </header>
 
-  <section>
-   <button id="themeToggle">Toggle Light/Dark Mode</button>
+  <div class="container">
+    <section>
+      <button id="themeToggle"><i class="fas fa-adjust"></i> Toggle Dark Mode</button>
+    </section>
+    
+    <section>
+      <h2><i class="fas fa-user-circle"></i> About Me</h2>
+      <p>
+        A highly motivated third-year university student pursuing a Bachelor of Networking and Security at the University of the South Pacific. Demonstrates strong theoretical knowledge in WAN, LAN, routing and switching, cybersecurity, and cloud computing. Known for excellent communication skills, time management, and a positive attitude. Currently undertaking my Industrial Experience Project (IEP) at USP, where I get to apply real-world skills and grow as a tech professional.
+      </p>
+      <p>
+        Seeking internship or part-time opportunities to gain hands-on experience and contribute to an innovative organization.
+      </p>
+    </section>
 
-  </section>
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I’m passionate about networking, security, and tech infrastructure. Currently undertaking my Industrial Experience Project (IEP) at USP, where I get to apply real-world skills and grow as a tech professional.
-    </p>
-  </section>
+    <section>
+      <h2><i class="fas fa-laptop-code"></i> Skills & Expertise</h2>
+      <div class="skills-category">
+        <h3><i class="fas fa-network-wired"></i> Networking Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-item expandable">
+            <i class="fas fa-network-wired"></i>
+            <div class="skill-content">
+              <span class="skill-title">Network Infrastructure</span>
+              <div class="skill-details">
+                <p>LAN/WAN configuration, TCP/IP, DHCP, DNS, VLANs, Subnetting</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-wifi"></i>
+            <div class="skill-content">
+              <span class="skill-title">Wireless Networking</span>
+              <div class="skill-details">
+                <p>802.11 standards, WPA/WPA2/WPA3, Wireless troubleshooting</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-route"></i>
+            <div class="skill-content">
+              <span class="skill-title">Routing & Switching</span>
+              <div class="skill-details">
+                <p>Static/Dynamic routing, OSPF, BGP basics, Switch configuration</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-chart-line"></i>
+            <div class="skill-content">
+              <span class="skill-title">Network Monitoring</span>
+              <div class="skill-details">
+                <p>Traffic analysis, Performance optimization, Bandwidth management</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-search"></i>
+            <div class="skill-content">
+              <span class="skill-title">Packet Analysis</span>
+              <div class="skill-details">
+                <p>Wireshark, tcpdump, Protocol analysis, Network troubleshooting</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-sitemap"></i>
+            <div class="skill-content">
+              <span class="skill-title">Network Protocols</span>
+              <div class="skill-details">
+                <p>HTTP/HTTPS, FTP, SSH, SMTP, POP3, IMAP, SNMP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3><i class="fas fa-shield-alt"></i> Security Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-item expandable">
+            <i class="fas fa-lock"></i>
+            <div class="skill-content">
+              <span class="skill-title">Network Security</span>
+              <div class="skill-details">
+                <p>Firewalls, IDS/IPS, VPN, Access Control Lists, Security policies</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-user-shield"></i>
+            <div class="skill-content">
+              <span class="skill-title">Identity & Access Management</span>
+              <div class="skill-details">
+                <p>Authentication protocols, Authorization models, SSO, MFA</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-bug"></i>
+            <div class="skill-content">
+              <span class="skill-title">Vulnerability Assessment</span>
+              <div class="skill-details">
+                <p>Security scanning, Risk assessment, Penetration testing basics</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-key"></i>
+            <div class="skill-content">
+              <span class="skill-title">Cryptography</span>
+              <div class="skill-details">
+                <p>Encryption protocols, PKI, SSL/TLS, Hashing algorithms</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-shield-virus"></i>
+            <div class="skill-content">
+              <span class="skill-title">Threat Protection</span>
+              <div class="skill-details">
+                <p>Malware analysis, Anti-virus solutions, Email security</p>
+              </div>
+            </div>
+          </div>
+          <div class="skill-item expandable">
+            <i class="fas fa-file-contract"></i>
+            <div class="skill-content">
+              <span class="skill-title">Security Compliance</span>
+              <div class="skill-details">
+                <p>Security frameworks, Audit preparation, Documentation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3><i class="fas fa-tools"></i> Networking Tools</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>Cisco Packet Tracer</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>3CX Phone System (Basic Certified)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <i class="fab fa-cuttlefish"></i>
+            <span>C++</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <span>SQL</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3><i class="fas fa-desktop"></i> Software Proficiency</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <i class="fab fa-microsoft"></i>
+            <span>Microsoft Office Suite</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-google"></i>
+            <span>Google Workspace</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3><i class="fas fa-users"></i> Soft Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <i class="fas fa-comments"></i>
+            <span>Effective Communication</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-user-friends"></i>
+            <span>Team Collaboration</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-tasks"></i>
+            <span>Detail-Oriented</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-clock"></i>
+            <span>Time Management</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <h2>Skills & Interests</h2>
-    <ul>zation</li>
-    </ul>
-  </section>
-
-      <li>Computer Networking & Troubleshooting</li>
-      <li>Cybersecurity Fundamentals</li>
-      <li>Network Monitoring Tools</li>
-      <li>Wireshark & Packet Analysis</li>
-      <li>Cloud Services & Virtuali
- <section>
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:raoanshika342@gmail.com">raoanshika342@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/anshikarao" target="_blank">linkedin.com/in/anshikarao</a></p>
-  <p>Instagram: <a href="https://instagram.com/yourusername" target="_blank">@yourusername</a></p>
-  <p>Facebook: <a href="https://www.facebook.com/share/19KEz1k9CW/" target="_blank">Facebook/</a></p>
-</section>
+    <section>
+      <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:raoanshika342@gmail.com">raoanshika342@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://linkedin.com/in/anshikarao" target="_blank">linkedin.com/in/anshikarao</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <a href="https://instagram.com/yourusername" target="_blank">@yourusername</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-facebook"></i>
+          <a href="https://www.facebook.com/share/19KEz1k9CW/" target="_blank">Facebook</a>
+        </div>
+      </div>
+    </section>
 
 
 
   <script>
   const toggleBtn = document.getElementById('themeToggle');
+  const icon = toggleBtn.querySelector('i');
+  
+  // Check for saved theme preference or default to light mode
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    icon.classList.remove('fa-adjust');
+    icon.classList.add('fa-sun');
+    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Toggle Light Mode';
+  }
+  
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    
+    // Save preference to localStorage
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('darkMode', 'true');
+      icon.classList.remove('fa-adjust');
+      icon.classList.add('fa-sun');
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Toggle Light Mode';
+    } else {
+      localStorage.setItem('darkMode', 'false');
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-adjust');
+      toggleBtn.innerHTML = '<i class="fas fa-adjust"></i> Toggle Dark Mode';
+    }
+  });
+  
+  // Add tech animation effects
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    // Fade-in effect for sections
+    sections.forEach((section, index) => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
+      }, 300 + (index * 150));
+    });
+    
+    // Staggered animation for skill items
+    skillItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-20px)';
+      
+      setTimeout(() => {
+        item.style.transition = 'all 0.4s ease';
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, 1000 + (index * 100));
+    });
+    
+    // Add subtle hover glow effect to all icons
+    const icons = document.querySelectorAll('i');
+    icons.forEach(icon => {
+      icon.style.transition = 'all 0.3s ease';
+      icon.addEventListener('mouseover', () => {
+        icon.style.textShadow = `0 0 10px var(--accent-color), 0 0 20px var(--accent-color)`;
+        icon.style.transform = 'scale(1.2)';
+      });
+      icon.addEventListener('mouseout', () => {
+        icon.style.textShadow = 'none';
+        icon.style.transform = 'scale(1)';
+      });
+    });
+  });
+  
+  // Add a typing effect to the header
+  setTimeout(() => {
+    const title = document.querySelector('header h1');
+    const originalText = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+      if (i < originalText.length) {
+        title.textContent += originalText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    };
+    
+    typeWriter();
+  }, 500);
+  
+  // Make skill items expandable
+  const expandableItems = document.querySelectorAll('.expandable');
+  expandableItems.forEach(item => {
+    item.addEventListener('click', function() {
+      this.classList.toggle('expanded');
+      
+      // Close other expanded items
+      expandableItems.forEach(otherItem => {
+        if (otherItem !== this && otherItem.classList.contains('expanded')) {
+          otherItem.classList.remove('expanded');
+        }
+      });
+    });
+  });
+  
+  // Add hover effect for skill items
+  const skillItems = document.querySelectorAll('.skill-item');
+  skillItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      const icon = this.querySelector('i');
+      icon.style.transform = 'scale(1.2)';
+      icon.style.color = 'var(--accent-color)';
+      
+      // Add a subtle pulse animation
+      icon.style.animation = 'pulse 1s infinite alternate';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      const icon = this.querySelector('i');
+      icon.style.transform = '';
+      icon.style.color = '';
+      icon.style.animation = '';
+    });
   });
 </script>
 
