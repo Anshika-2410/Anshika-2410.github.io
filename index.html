@@ -34,7 +34,7 @@
   }
 
   header {
-    background: var(--header-light);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     color: white;
     padding: 30px 20px;
     border-radius: 10px;
@@ -76,74 +76,35 @@
     font-size: 1.1em;
   }
 
-  #themeToggle {
-    cursor: pointer;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px;
-    transition: all 0.3s;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  #themeToggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.5s;
-    z-index: -1;
-  }
-
-  #themeToggle:hover::before {
-    left: 100%;
-  }
-
-  #themeToggle i {
-    margin-right: 8px;
-  }
-
-  #themeToggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4), 0 0 20px rgba(0, 229, 255, 0.2);
-  }
 
   @media (max-width: 768px) {
-    .profile-container {
+    :root {
+      --accent-color: #2c3e50;
+      --accent-hover: #1a252f;
+      --accent-color-secondary: #34495e;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-content {
       flex-direction: column;
       text-align: center;
       gap: 20px;
     }
     
-    .profile-image {
+    .profile-photo {
       width: 150px;
-      height: 150px;
+      height: 180px;
+      margin: 0 auto;
+      border-width: 3px;
     }
     
-    .profile-info {
+    .header-text {
       text-align: center;
     }
     
-    .profile-info h1 {
-      font-size: 2.2em;
-    }
-    
-    .profile-info p {
-      font-size: 1.1em;
+    .header-text h1 {
+      color: var(--accent-color);
+      font-size: 1.8em;
     }
     
     header h1 {
@@ -154,6 +115,36 @@
     }
     section {
       padding: 15px;
+      border-radius: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --accent-color: #2c3e50;
+      --accent-hover: #1a252f;
+      --accent-color-secondary: #34495e;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-photo {
+      width: 120px;
+      height: 150px;
+      border-width: 2px;
+    }
+    
+    .header-text h1 {
+      color: var(--accent-color);
+      font-size: 1.6em;
+    }
+    
+    header h1 {
+      font-size: 1.8em;
+    }
+    
+    section {
+      border-radius: 10px;
+      margin: 20px auto;
     }
   }
     body {
@@ -183,7 +174,9 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('image/image_trae.jpg');
+    background: 
+      linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 50%, rgba(240, 147, 251, 0.1) 100%),
+      url('image/image_trae.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -195,6 +188,7 @@
     line-height: 1.6;
     transition: all 0.3s ease;
     position: relative;
+    overflow-x: hidden;
   }
   
   body::before {
@@ -204,8 +198,23 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+    background: 
+      linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%),
+      radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
     z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+  }
+
+  @keyframes backgroundShift {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
   }
   
   /* Animated grid background */
@@ -217,15 +226,15 @@
     width: 100%;
     height: 100%;
     background-image: 
-      linear-gradient(rgba(18, 16, 16, 0) 2px, transparent 2px),
-      linear-gradient(90deg, rgba(18, 16, 16, 0) 2px, transparent 2px),
-      linear-gradient(rgba(18, 16, 16, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(18, 16, 16, 0.1) 1px, transparent 1px);
+      linear-gradient(rgba(102, 126, 234, 0.1) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(102, 126, 234, 0.1) 2px, transparent 2px),
+      linear-gradient(rgba(240, 147, 251, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240, 147, 251, 0.05) 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
     animation: backgroundMove 50s linear infinite;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.3;
   }
   
   @keyframes backgroundMove {
@@ -238,98 +247,166 @@
   }
 
   header {
-    background: linear-gradient(135deg, rgba(0, 51, 102, 0.8) 0%, rgba(123, 67, 151, 0.8) 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     color: white;
-    padding: 40px 20px;
+    padding: 50px 20px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--accent-color);
-    margin-bottom: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(240, 147, 251, 0.2);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   header::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(transparent, transparent 50px, rgba(255, 255, 255, 0.03) 50px, rgba(255, 255, 255, 0.03) 100px);
-    transform: rotate(45deg);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(240, 147, 251, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(118, 75, 162, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(102, 126, 234, 0.25) 0%, transparent 50%);
     z-index: 0;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+  }
+
+  /* Floating Particles */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(240, 147, 251, 0.6);
+    border-radius: 50%;
+    animation: floatParticle 15s infinite linear;
+  }
+
+  .particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 20s;
+  }
+
+  .particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 2s;
+    animation-duration: 18s;
+  }
+
+  .particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 4s;
+    animation-duration: 22s;
+  }
+
+  .particle:nth-child(4) {
+    left: 70%;
+    animation-delay: 6s;
+    animation-duration: 16s;
+  }
+
+  .particle:nth-child(5) {
+    left: 80%;
+    animation-delay: 8s;
+    animation-duration: 24s;
+  }
+
+  .particle:nth-child(6) {
+    left: 90%;
+    animation-delay: 10s;
+    animation-duration: 19s;
+  }
+
+  @keyframes floatParticle {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) scale(1);
+      opacity: 0;
+    }
   }
   
   header h1, header p {
     position: relative;
     z-index: 1;
   }
-
-  .profile-container {
+  
+  .header-content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    gap: 30px;
     max-width: 1000px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
   }
 
-  .profile-image {
-    position: relative;
+  .profile-photo {
     width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
+    height: 250px;
+    border-radius: 15px;
+    border: 3px solid rgba(240, 147, 251, 0.6);
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+    position: relative;
     z-index: 2;
   }
 
-  .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  .profile-photo:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(240, 147, 251, 0.9);
   }
 
-  .profile-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease;
-  }
-
-
-  .profile-info {
+  .header-text {
     flex: 1;
     text-align: left;
   }
 
-  .profile-info h1 {
+  .header-text h1 {
+    font-size: 2.5em;
     margin-bottom: 15px;
-    font-size: 2.8em;
+    text-shadow: 0 0 20px rgba(240, 147, 251, 0.6);
+    letter-spacing: 1px;
+    font-weight: 700;
   }
 
-  .profile-info p {
+  .header-text p {
     font-size: 1.2em;
     margin-bottom: 8px;
-    opacity: 0.9;
-  }
-
-  
-  header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-    letter-spacing: 2px;
-  }
-
-  header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
   }
 
   .container {
@@ -339,22 +416,22 @@
   }
 
   section {
-    background-color: var(--bg-light);
-    padding: 30px;
-    margin: 30px auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border-left: 3px solid var(--accent-color);
-    max-width: 1000px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(240, 147, 251, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    transition: all 0.4s ease;
   }
 
   section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px var(--glow-color);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(240, 147, 251, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
   }
   
   section::before {
@@ -363,14 +440,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
-    opacity: 0;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(52, 152, 219, 0.015) 25px, rgba(52, 152, 219, 0.015) 50px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(41, 128, 185, 0.015) 35px, rgba(41, 128, 185, 0.015) 70px);
+    opacity: 0.3;
     transition: opacity 0.3s ease;
+    z-index: 0;
   }
   
   section:hover::before {
-    opacity: 1;
+    opacity: 0.6;
   }
   
   section::after {
@@ -385,13 +465,16 @@
   }
 
   h2 {
-    color: var(--accent-color);
-    margin-bottom: 20px;
+    background: linear-gradient(45deg, #667eea, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 1.8em;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(240, 147, 251, 0.3);
+    position: relative;
+    z-index: 1;
   }
   
   h2 i {
@@ -400,11 +483,19 @@
 
   ul {
     list-style-type: square;
-    margin-left: 20px;
+    margin: 0;
+    padding-left: 20px;
   }
 
   p, li {
     font-size: 1.1em;
+  }
+
+  header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    letter-spacing: 2px;
   }
 
   a {
@@ -415,7 +506,8 @@
   }
 
   a:hover {
-    color: #4dd0e1;
+    color: var(--accent-hover);
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
   }
   
   a::after {
@@ -651,12 +743,20 @@
   <div class="tech-decoration matrix">function secure() {<br>  return encrypt(data);<br>}<br>// Network Security Protocol</div>
   <div class="tech-decoration code-lines">class NetworkAnalyzer {<br>  constructor() {<br>    this.packets = [];<br>  }<br>  analyze() {<br>    // Analyzing network traffic<br>  }<br>}</div>
   
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  
   <header>
-    <div class="profile-container">
-      <div class="profile-image">
-        <img src="image/pic" alt="Anshika Rao" />
-      </div>
-      <div class="profile-info">
+    <div class="header-content">
+      <img src="image/cv.jpg" alt="Anshika Rao Profile Photo" class="profile-photo">
+      <div class="header-text">
         <h1><i class="fas fa-network-wired"></i> Anshika Rao</h1>
         <p><i class="fas fa-user-shield"></i> Bachelor of Networking & Security Student</p>
         <p><i class="fas fa-university"></i> University of the South Pacific</p>
@@ -665,18 +765,20 @@
   </header>
 
   <div class="container">
-    <section>
-      <button id="themeToggle"><i class="fas fa-adjust"></i> Toggle Dark Mode</button>
-    </section>
     
     <section>
       <h2><i class="fas fa-user-circle"></i> About Me</h2>
       <p>
-        A highly motivated third-year university student pursuing a Bachelor of Networking and Security at the University of the South Pacific. Demonstrates strong theoretical knowledge in WAN, LAN, routing and switching, cybersecurity, and cloud computing. Known for excellent communication skills, time management, and a positive attitude. Currently undertaking my Industrial Experience Project (IEP) at USP, where I get to apply real-world skills and grow as a tech professional.
-      </p>
-      <p>
-        Seeking internship or part-time opportunities to gain hands-on experience and contribute to an innovative organization.
-      </p>
+        My name is Anshika Rao, and I am currently a final-year student at the University of the South Pacific, pursuing a Bachelor's degree in Network and Security. I come from a middle-class family background, which has instilled in me the values of hard work and determination.
+
+        Outside of my academic pursuits, I enjoy playing video games, listening to music, and playing volleyball, all of which help me maintain a balanced and focused lifestyle.
+        
+        I chose to enroll in this course because of the rapidly evolving technological landscape we live in. As technology becomes increasingly integrated into our daily lives, the need for skilled professionals who can safeguard individuals and organizations from cyber threats, fraud, and scams has never been more critical. Furthermore, I am motivated by the prospect of securing employment soon after graduation, which will allow me to contribute meaningfully to my family and support my mother by sharing the financial responsibilities.
+        
+        Through this program, I aim to deepen my understanding of various coding languages, network architecture, and application development. My ultimate career goal is to become a network engineer, though I remain open to exploring other opportunities within the tech industry.
+        
+        I am excited about the learning journey ahead and look forward to honing the skills necessary to make a positive impact in the field of network security.      </p>
+         </p>
     </section>
 
     <section>
@@ -891,51 +993,11 @@
 
 
   <script>
-  const toggleBtn = document.getElementById('themeToggle');
-  const icon = toggleBtn.querySelector('i');
-  
-  // Check for saved theme preference or default to light mode
-  if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-    icon.classList.remove('fa-adjust');
-    icon.classList.add('fa-sun');
-    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Toggle Light Mode';
-  }
-  
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    
-    // Save preference to localStorage
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('darkMode', 'true');
-      icon.classList.remove('fa-adjust');
-      icon.classList.add('fa-sun');
-      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Toggle Light Mode';
-    } else {
-      localStorage.setItem('darkMode', 'false');
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-adjust');
-      toggleBtn.innerHTML = '<i class="fas fa-adjust"></i> Toggle Dark Mode';
-    }
-  });
   
   // Add tech animation effects
   document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const skillItems = document.querySelectorAll('.skill-item');
-    const profileImage = document.querySelector('.profile-image');
-    
-    // Profile image entrance animation
-    if (profileImage) {
-      profileImage.style.opacity = '0';
-      profileImage.style.transform = 'scale(0.5) rotate(180deg)';
-      
-      setTimeout(() => {
-        profileImage.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        profileImage.style.opacity = '1';
-        profileImage.style.transform = 'scale(1) rotate(0deg)';
-      }, 200);
-    }
     
     // Fade-in effect for sections
     sections.forEach((section, index) => {
